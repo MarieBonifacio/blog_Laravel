@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row justify-content-center">
-        <h1>{{$article->titre}}</h1>
+        <h1>{{ Auth::user()->name }}</h1>
     </div>
 
 <div class="container">
@@ -11,11 +11,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body"> 
-                    {{$article->contenu}}<br/>
                 </div>
-                <div class="card-body"> 
-                        {{$article->author_id->name}}<br/>
-                    </div>
             </div>
         </div> 
     </div>

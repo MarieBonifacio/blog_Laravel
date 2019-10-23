@@ -17,8 +17,10 @@ class CreateArticlesTable extends Migration
             $table->bigIncrements('id');
             $table->string('titre');
             $table->text('contenu');
-            $table->integer('author_id');
+            $table->bigInteger('author_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 

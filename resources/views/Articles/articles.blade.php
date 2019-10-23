@@ -1,19 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="row justify-content-center">
+    <h1>Mes Articles</h1>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @foreach($articles as $article)
-                        {{$article->titre}}<br/>
-                    @endforeach
+        @foreach($articles as $article)
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">{{$article->titre}}</div>
+                        <div class="card-body">
+                            {{$article->contenu}}<br/><br/>
+                        <a href={{route('article', $article->id)}} class="btn btn-dark">Lire la suite</a>
+                    </div>
                 </div>
             </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
