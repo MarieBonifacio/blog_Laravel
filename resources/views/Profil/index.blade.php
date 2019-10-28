@@ -11,7 +11,16 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body"> 
+                    {{$user->email}}
                 </div>
+                <div class="card-body"> 
+                    {{$user->password}}
+                </div>
+                {{-- @foreach($articles->user as $user)
+                <div class="card-body"> 
+                    
+                </div>
+                @endforeach --}}
             </div>
         </div> 
     </div>

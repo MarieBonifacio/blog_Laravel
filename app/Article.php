@@ -10,9 +10,9 @@ class Article extends Model
         'titre', 'contenu', 'author_id',
     ];
 
-    public function author_id()
+    public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'author_id', 'id');
     }
 
     

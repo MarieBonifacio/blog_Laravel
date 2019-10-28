@@ -14,7 +14,7 @@
                     {{$article->contenu}}<br/>
                 </div>
                 <div class="card-body"> 
-                        {{$article->author_id->name}}<br/>
+                        {{$article->user->name}}<br/>
                     </div>
             </div>
         </div> 

@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration
             $table->bigInteger('author_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('restrict');
         });
     }
 

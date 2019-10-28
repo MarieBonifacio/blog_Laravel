@@ -23,4 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/article', 'ArticleController@index')->name('articles');
 Route::get('/article/{id}', 'ArticleController@showArticle')->name('article');
 
-Route::get('/profil', 'HomeController@profil')->name('profil');
+Route::get('/profil/{id}', 'HomeController@profil')->name('profil');
