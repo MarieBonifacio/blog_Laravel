@@ -16,11 +16,11 @@
                 <div class="card-body"> 
                     {{$user->password}}
                 </div>
-                {{-- @foreach($articles->user as $user)
+                @foreach($articles as $article)
                 <div class="card-body"> 
-                    
+                    {{$article->titre}}
                 </div>
-                @endforeach --}}
+                @endforeach 
             </div>
         </div> 
     </div>
