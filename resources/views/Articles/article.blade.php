@@ -14,7 +14,7 @@
                     {{$article->contenu}}<br/>
                 </div>
                 <div class="card-body"> 
-                        {{$article->user->name}}<br/>
+                        <a href={{route('profil', $article->user->id)}}>{{$article->user->name}}</a><br/>
                     </div>
             </div>
         </div> 

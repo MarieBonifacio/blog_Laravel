@@ -32,8 +32,6 @@ class HomeController extends Controller
     {
         //Dans une variable, je stocke tous les éléments du modèle User
         $user = User::where('id', $id)->first();
-        //Voir afficher article par utilisateurs
-        $articles = Article::where('id', $id)->find(1);
         //Je crée ma vue index.blade dans le dossier profil, mais besoin d'un tableau de données avec les variables du dessus
         return view('Profil/index', ["user" =>$user]);
     }

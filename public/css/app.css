@@ -11100,3 +11100,7 @@ a.text-dark:focus {
   }
 }
 
+ion-icon {
+  font-size: 32px;
+}
+

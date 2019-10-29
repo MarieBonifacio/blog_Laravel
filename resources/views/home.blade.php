@@ -20,6 +20,10 @@
                     @endif
 
                     Bonjour {{ Auth::user()->name }}, vous êtes connecté(e) !
+                    <a id="nav-link" href="{{ route ('articles')}}">Articles publiés</a>
+                    <a id="nav-link" href="{{ route ('createArticle')}}">Créer un article</a>
+                    <a id="nav-link" href="{{ route ('profil', Auth::user()->id)}}">Accéder à mon profil</a>
+
                 </div>
             </div>
         </div>

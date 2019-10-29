@@ -22,5 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/article', 'ArticleController@index')->name('articles');
 Route::get('/article/{id}', 'ArticleController@showArticle')->name('article');
+Route::get('/createArticle', 'ArticleController@create')->name('createArticle')->middleware('auth');
+Route::post('/storeArticle', 'ArticleController@store')->name('storeArticle')->middleware('auth');
+Route::delete('/article/{id}', 'ArticleController@delete')->name('deleteArticle')->middleware('auth');
+    
 
 Route::get('/profil/{id}', 'HomeController@profil')->name('profil');

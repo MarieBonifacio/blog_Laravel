@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Auth;
 
 class ArticleController extends Controller
 {
+
+
     public function index()
     {
         //Dans une variable, je stocke tous les éléments du modèle Article
@@ -20,5 +23,32 @@ class ArticleController extends Controller
         //Dans une variable, je stocke un seul article (first) selon l'id correspondant
         $article = Article::where('id', $id)->first();
         return view("Articles/article", ["article" =>$article]);
+    }
+
+    public function create()
+    {
+        return view('Articles.create');
+    }
+
+    public function store(request $request)
+    {
+        $request->validate([
+            'titre'=>'required',
+            'contenu' => 'required',
+        ]);
+
+        // Article::create($request->all());
+        Article::create([
+            "titre" => $request->titre,
+            "contenu" => $request->contenu,
+            "author_id" => Auth::user()->id
+        ]);
+        return redirect()->route('articles')->with('success', 'Article créé');
+    }
+
+    public function delete($id)
+    {
+        $article= Article::findOrFail($id)->delete();
+        return redirect()->route('articles');
     }
 }
