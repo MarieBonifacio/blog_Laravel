@@ -38,10 +38,12 @@
                                 
                                 {{-- <a href="{{route('deleteArticle', $article->id)}}"><ion-icon name="trash"></ion-icon></a> --}}
                                 {{--UPDATE--}}
+                                @if($article->author_id == Auth::user()->id)
                                 <form action="{{route('editArticle', $article->id)}}" method="get">
                                     @csrf
                                 <button type="submit" class="btn"><ion-icon name="create"></ion-icon></button>
                                 </form>
+                                @endif
                                  {{--VIEW--}}
                                 <form action="{{route('deleteArticle', $article->id)}}" method="post">
                                         @csrf
