@@ -11,7 +11,7 @@
         @foreach($articles as $article)
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">{{$article->titre}}</div>
+                    <div class="card-header">{{$article->titre}} écrit par <a href="{{route('profil', $article->user->id)}}">{{$article->user->name}}</a></div>
                         <div class="card-body">
                             {{$article->contenu}}<br/><br/>
                         <a href={{route('article', $article->id)}} class="btn btn-dark">Lire la suite</a>

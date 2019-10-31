@@ -12,10 +12,10 @@
             <div class="card">
                 <h2>Informations</h2>
                 <div class="card-body"> 
-                    {{$user->email}}
+                    <p>Adresse Email : {{$user->email}}</p>
                 </div>
                 <div class="card-body"> 
-                    {{$user->password}}
+                    <p>Mot de passe : {{$user->password}}</p>
                 </div>
                 @if($user->id == Auth::user()->id)
                 <div class="card-body"> 
@@ -23,6 +23,7 @@
                 </div>
                 @endif
                 {{-- cf fonction articles dans modele user --}}
+                <h2>Articles</h2>
                 @foreach($user->articles as $article)
                     <div class="card">
                         <div class="card-body"> 
@@ -46,12 +47,12 @@
                                 <button type="submit" class="btn"><ion-icon name="create"></ion-icon></button>
                                 </form>
                                 @endif
-                                 {{--VIEW--}}
-                                <form action="{{route('deleteArticle', $article->id)}}" method="post">
-                                        @csrf
-                                        @method('DELETE')                               
+                                {{--VIEW--}}
+                                <form action="{{route('article', $article->id)}}" method="get">
+                                    @method('get');
+                                    @csrf                             
                                     <button type="submit" class="btn"><ion-icon name="eye"></ion-icon></button>
-                                    </form>
+                                </form>
                             </div>
                         </div> 
                     </div>
