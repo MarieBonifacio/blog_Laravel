@@ -84,16 +84,16 @@
         </main>
     </div>
 </body>
-<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+{{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>
     tinymce.init({
         selector:'textarea#ckedit',
         width: 900,
         height: 300
     });
-</script>
-
-{{-- <script>
+</script> --}}
+{{-- 
+<script>
     let ckedit = document.querySelector("#ckedit");
     if(ckedit){
         ClassicEditor
@@ -102,5 +102,5 @@
                 console.error(error);
             });
     }
-</script> --}}
+</script>  --}}
 </html>

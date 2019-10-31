@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="row justify-content-center">
-        <h1>{{ Auth::user()->name }}</h1>
+        <h1>{{ $user->name }}</h1>
     </div>
 
 <div class="container">
@@ -17,9 +17,11 @@
                 <div class="card-body"> 
                     {{$user->password}}
                 </div>
+                @if($user->id == Auth::user()->id)
                 <div class="card-body"> 
                 <a href="{{ route('createArticle')}}" type="button" class="btn-lg btn-primary">Nouvel article</a>
                 </div>
+                @endif
                 {{-- cf fonction articles dans modele user --}}
                 @foreach($user->articles as $article)
                     <div class="card">

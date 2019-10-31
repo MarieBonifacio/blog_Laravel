@@ -19,7 +19,6 @@ class checkUser
     public function handle($request, Closure $next, $id=null)
     {
         $response = $next($request);
-        dd($id);
 
         $user = Auth::user();
         // $article = Article::findOrFail();
