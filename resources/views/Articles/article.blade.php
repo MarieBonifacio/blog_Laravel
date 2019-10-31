@@ -11,7 +11,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body"> 
-                    {{$article->contenu}}<br/>
+                    {!! $article->contenu !!}<br/>
                 </div>
                 <div class="card-body"> 
                         <a href={{route('profil', $article->user->id)}}>{{$article->user->name}}</a><br/>

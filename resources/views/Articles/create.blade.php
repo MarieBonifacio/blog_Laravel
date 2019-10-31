@@ -19,7 +19,7 @@
         <div class="form-group green-border-focus">
             <label for="exampleInputPassword1">Texte</label>
             <i class="fas fa-pencil-alt prefix"></i>
-            <textarea class="form-control" rows=10 type="text" name="contenu" class="form-control" required></textarea>
+            <textarea id="ckedit" class="form-control" rows=10 type="text" name="contenu" class="form-control" required></textarea>
         </div>
         <div class="form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">

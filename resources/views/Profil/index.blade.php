@@ -26,23 +26,27 @@
                         <div class="card-body"> 
                             <a href ="{{route('article', $article->id)}}">{{$article->titre}}</a>
                             <div class="row justify-content-center">
-                                <form action="{{route('deleteArticle', $article->id)}}" method="post">
+                                {{--DELETE--}}
+                                @if($article->author_id == Auth::user()->id)
+                                    <form action="{{route('deleteArticle', $article->id)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     
                                     <button type="submit" class="btn"><ion-icon name="trash" class="trash"></ion-icon></button>
                                 </form> 
+                                @endif
+                                
                                 {{-- <a href="{{route('deleteArticle', $article->id)}}"><ion-icon name="trash"></ion-icon></a> --}}
-                                <form>
-                                <form action="{{route('deleteArticle', $article->id)}}" method="post">
+                                {{--UPDATE--}}
+                                <form action="{{route('editArticle', $article->id)}}" method="get">
                                     @csrf
-                                    @method('DELETE')                               
-                                <button type="subit" class="btn"><ion-icon name="create"></ion-icon></button>
+                                <button type="submit" class="btn"><ion-icon name="create"></ion-icon></button>
                                 </form>
+                                 {{--VIEW--}}
                                 <form action="{{route('deleteArticle', $article->id)}}" method="post">
                                         @csrf
                                         @method('DELETE')                               
-                                    <button type="subit" class="btn"><ion-icon name="eye"></ion-icon></button>
+                                    <button type="submit" class="btn"><ion-icon name="eye"></ion-icon></button>
                                     </form>
                             </div>
                         </div> 

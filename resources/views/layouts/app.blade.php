@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script> 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -83,4 +84,23 @@
         </main>
     </div>
 </body>
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector:'textarea#ckedit',
+        width: 900,
+        height: 300
+    });
+</script>
+
+{{-- <script>
+    let ckedit = document.querySelector("#ckedit");
+    if(ckedit){
+        ClassicEditor
+            .create(ckedit)
+            .catch(error => {
+                console.error(error);
+            });
+    }
+</script> --}}
 </html>

@@ -19,12 +19,18 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+//FORMULAIRE
 Route::get('/article', 'ArticleController@index')->name('articles');
 Route::get('/article/{id}', 'ArticleController@showArticle')->name('article');
 Route::get('/createArticle', 'ArticleController@create')->name('createArticle')->middleware('auth');
 Route::post('/storeArticle', 'ArticleController@store')->name('storeArticle')->middleware('auth');
 Route::delete('/article/{id}', 'ArticleController@delete')->name('deleteArticle')->middleware('auth');
-    
+Route::get('/updateArticle/{id}', 'ArticleController@edit')->name('editArticle')->middleware('auth');
+Route::put('/updateArticle/{article}', 'ArticleController@update')->name('updateArticle')->middleware('auth');
 
+//IMAGES
+Route::get('image-upload', 'ImageUploadController@imageUpload')->name('imageUpload');
+Route::post('image-upload', 'ImageUploadController@imageUploadPost')->name('imageUploadPost');
+
+//USER
 Route::get('/profil/{id}', 'HomeController@profil')->name('profil');

@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function articles()
     {
-        return $this->hasMany('App\Article', 'author_id', 'id');
+        return $this->hasMany('App\Models\Article', 'author_id', 'id');
     }
 
 }

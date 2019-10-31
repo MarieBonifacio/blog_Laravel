@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Article;
+use App\Models\Article;
 use Auth;
 
 class ArticleController extends Controller
@@ -47,8 +47,20 @@ class ArticleController extends Controller
     }
 
     public function delete($id)
-    {
+    {   
         $article= Article::findOrFail($id)->delete();
         return redirect()->route('articles');
+    }
+
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+        return view('Articles.edit', ["article"=>$article]);
+    }
+
+    public function update(Request $request, Article $article)
+    {
+        $article->update($request->all());
+        return redirect()->route('article', ["id"=>$article->id]);
     }
 }
