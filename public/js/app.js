@@ -36920,6 +36920,19 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+AOS.init(); //Menu burger
+
+var bouton = document.querySelector('#burgerButton');
+console.log(bouton);
+bouton.addEventListener("click", function () {
+  document.querySelector('aside').classList.add('open');
+}); //fermer menu burger
+
+var boutonFermer = document.querySelector('#closeButton');
+boutonFermer.addEventListener("click", function () {
+  document.querySelector('aside').classList.remove('open');
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":

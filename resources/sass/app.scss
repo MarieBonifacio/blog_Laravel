@@ -7,8 +7,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+//header
+@import 'header';
 
 
+body{
+    color: black;
+    background-color: #212529;
+}
 
 ion-icon {
     font-size:32px;

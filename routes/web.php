@@ -14,7 +14,7 @@
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 //FORMULAIRE
 Route::get('/article', 'ArticleController@index')->name('articles');
@@ -31,3 +31,6 @@ Route::post('image-upload', 'ImageUploadController@imageUploadPost')->name('imag
 
 //USER
 Route::get('/profil/{id}', 'HomeController@profil')->name('profil');
+
+//PORTFOLIO
+Route::get('/portfolio', 'portfolioController@show')->name('portfolio');
