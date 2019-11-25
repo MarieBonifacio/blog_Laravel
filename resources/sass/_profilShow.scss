@@ -1,0 +1,38 @@
+.container.profil{
+    height: 100%;
+    width: 70%;
+    text-align:center;
+    padding: 10px;
+        .card.articles{
+            height:auto;
+        
+            .card-body.articlesList{
+                margin:10px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                .list{
+                    width: 80%;
+                    height: 100%;
+                    display:flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    a{
+                        margin-right: 10px;
+                    }
+                    .actions{
+                        display: flex;
+                    }
+                }
+            }
+        }
+}
+
+
+@media screen and (min-width:300px){
+    .container.profil{
+        width: 90%;
+    }
+}

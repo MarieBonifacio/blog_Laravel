@@ -2,16 +2,14 @@
 
 @section('content')
 
-<div class="row justify-content-center">
+    <div class="title">
         <h1>Accueil</h1>
     </div>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
             <div class="card">
                 @if(Auth::user())
-                <div class="card-header">Tableau de bord</div>
+                <div class="card-header"><h2>Tableau de bord<h2></div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -21,31 +19,34 @@
                     @endif
 
                     
-                    Bonjour {{ Auth::user()->name }}, vous êtes connecté(e) !
-                    <a id="nav-link" href="{{ route ('articles')}}">Articles publiés</a>
-                    <a id="nav-link" href="{{ route ('createArticle')}}">Créer un article</a>
-                    <a id="nav-link" href="{{ route ('profil', Auth::user()->id)}}">Accéder à mon profil</a>
+                    <p>Bonjour {{ Auth::user()->name }}, vous êtes connecté(e) !</p>
+
+                    <div id="navCard">
+                        <a href="{{ route ('articles')}}"><ion-icon name="albums"></ion-icon></a>
+                        <a href="{{ route ('createArticle')}}"><ion-icon name="create"></ion-icon></a>
+                        <a href="{{ route ('profil', Auth::user()->id)}}"><ion-icon name="person"></ion-icon></a>
                     @endif
+                    </div>
 
                 </div>
             </div>
-            <div class="container">
-                    <div class="row justify-content-center">
-                        @foreach($articles as $article)
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header">{{$article->titre}} écrit par <a href="{{route('profil', $article->user->id)}}">{{$article->user->name}}</a></div>
-                                        <div class="card-body">
-                                            {{$article->contenu}}<br/><br/>
-                                        <a href={{route('article', $article->id)}} class="btn btn-dark">Lire la suite</a>
-                                    </div>
-                                </div>
+</div>
+        <div class="container">
+            <div class="card">
+                    <div class="card-header"><h2>Derniers articles<h2></div>
+                @foreach($articles as $article)
+                        <div class="card">
+                            <div class="card-header last"><h3>{{$article->titre}}</h3> écrit par <a href=" {{route('profil', $article->user->id)}} ">{{$article->user->name}}</a></div>
+                                <div class="card-body last">
+                                    {{$article->contenu}}<br/><br/>
+                                <a href={{route('article', $article->id)}} class="btn btn-dark"><ion-icon name="eye"></ion-icon></a>
                             </div>
-                        @endforeach
-                    </div>
-                </div>
-        </div>
-    </div>
+                        </div>
+                @endforeach
+            </div>
+            {{-- <div class="container"> --}}
+                   
+                {{-- </div> --}}
 </div>
 @endsection
 

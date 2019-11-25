@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://fonts.googleapis.com/css?family=Raleway|Roboto&display=swap");
+font-family: 'Roboto', sans-serif;
+font-family: 'Raleway', sans-serif;
+
 header {
   width: 100%;
   height: 100px;
@@ -15,7 +19,6 @@ header {
   top: 0;
   left: 0;
   z-index: 999;
-  color: white;
 }
 
 header .midnight {
@@ -33,6 +36,10 @@ header .midnight #logo {
   background-image: url(../public/images/moon1.svg);
   -webkit-transition: all 1s;
   transition: all 1s;
+}
+
+header .menu {
+  display: none;
 }
 
 header #burgerButton {
@@ -70,7 +77,7 @@ header nav ul {
 }
 
 header nav ul a {
-  color: black;
+  color: white;
   text-decoration: none;
   position: relative;
 }
@@ -152,14 +159,166 @@ aside.open ul a li {
   text-transform: uppercase;
 }
 
-@media screen and (min-width: 10px) {
+@media screen and (min-width: 600px) {
   #burgerButton {
     display: none;
   }
+  .menu, header nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.title {
+  width: 100%;
+  height: 100px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+}
+
+.container {
+  width: 100%;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: solid 1px white;
+  width: 90%;
+  height: 50%;
+  color: white;
+}
+
+.container .card .card-header {
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  border: solid 1px white;
+}
+
+.container .card-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.container .card-body #navCard {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.container.profil {
+  height: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.container.profil .card.articles {
+  height: 200px;
+}
+
+.container.profil .card.articles .card-body.articlesList {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container.profil .card.articles .card-body.articlesList .list {
+  width: 50%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.container.profil .card.articles .card-body.articlesList .list .actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 body {
-  color: white;
+  color: black;
+  background-color: #212529;
+  padding-top: 100px;
 }
 
 ion-icon {

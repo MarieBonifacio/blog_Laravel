@@ -38,10 +38,9 @@
 <body>
     {{-- 1 Inclure HEADER --}}
         
-    <header class="navbar">
+    <header>
         <div class="midnight">
             <div id="logo">
-                <!-- <img src="./images/logo.png"/> -->
             </div>
             </div>
             <ion-icon id="burgerButton" name="menu"></ion-icon>
@@ -69,10 +68,34 @@
             <div id="clear"></div>
             <nav>
                 <ul>
-                    <a href="{{ url('/') }}"><li>Blog</li></a>
-                    <a href="#"><li>Accueil</li></a>
-                    <a href="#"><li>A propos</li></a>
-                    <a href="#"><li>Contact</li></a>
+                    <li><a href="{{ url('/') }}">Blog</a></li>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">A propos</a></li>
+                    <li><a href="#">Contact</a></li>
+                    @guest
+                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a></li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('S\'inscrire') }}</a>
+                            </li>
+                        @endif
+                        @else
+                            <li><a href="{{ route('profil', auth::user()->id)}}">Mon profil</a></li>
+
+                                <li><a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a></li>
+                            
+                            
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                 </ul>
             </nav>
         </aside>
@@ -139,8 +162,8 @@
                 </div>
             </div>
         </nav> --}}
-    <div id="app">
-        <main class="py-4">
+    <div>
+        <main>
             @yield('content')
         </main>
     </div>

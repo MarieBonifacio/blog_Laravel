@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,EAAE,OAAO,CAAA;EACf,MAAM,EAAE,KAAK;CAChB",
+    "sources": [
+        "profilShow.scss"
+    ],
+    "names": [],
+    "file": "profilShow.css"
+}
