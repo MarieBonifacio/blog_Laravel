@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 @import url("https://fonts.googleapis.com/css?family=Raleway|Roboto&display=swap");
-font-family: 'Roboto', sans-serif;
-font-family: 'Raleway', sans-serif;
+:root {
+  --color1: rgb(4, 14, 44);
+  --color2: rgb(4, 25, 88);
+  --color3:rgb(30, 26, 73);
+  --color4:rgb(59, 58, 119);
+  --color5:rgb(47, 72, 140);
+}
 
 header {
   width: 100%;
@@ -80,11 +85,20 @@ header nav ul a {
   color: white;
   text-decoration: none;
   position: relative;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
 }
 
 header nav ul a li {
   padding: 0px 10px;
   text-transform: uppercase;
+}
+
+header nav ul a:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 aside {
@@ -185,9 +199,14 @@ aside.open ul a li {
   color: white;
 }
 
+.container.main {
+  height: 250px;
+}
+
 .container {
-  width: 100%;
-  height: 400px;
+  margin-bottom: 40px;
+  width: 75%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -201,6 +220,8 @@ aside.open ul a li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-shadow: 0px 20px 22px 8px rgba(0, 0, 0, 0.52);
+          box-shadow: 0px 20px 22px 8px rgba(0, 0, 0, 0.52);
 }
 
 .container .card {
@@ -214,13 +235,15 @@ aside.open ul a li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: solid 1px white;
-  width: 90%;
-  height: 50%;
+  width: 100%;
+  height: auto;
   color: white;
+  margin-bottom: 20px;
 }
 
 .container .card .card-header {
@@ -234,10 +257,29 @@ aside.open ul a li {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  border: solid 1px white;
+}
+
+.container .card-header.last {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .card-body.last, .container .card-header.last {
+  width: 90%;
+  border: solid 1px black;
+  padding: 10px;
 }
 
 .container .card-body {
+  text-align: center;
+  word-break: break-word;
+  margin-bottom: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -250,7 +292,7 @@ aside.open ul a li {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  height: 100%;
+  height: auto;
   width: 100%;
   display: flex;
   -ms-flex-line-pack: center;
@@ -258,27 +300,86 @@ aside.open ul a li {
 }
 
 .container .card-body #navCard {
+  height: 30px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -ms-flex-line-pack: center;
       align-content: center;
 }
 
-.container.profil {
+.container .bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: auto;
   width: 100%;
+}
+
+.container .bottom .author {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.container .bottom .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 1000px) {
+  .container {
+    width: 60%;
+  }
+}
+
+.container.profil {
+  height: 100%;
+  width: 70%;
   text-align: center;
+  padding: 10px;
 }
 
 .container.profil .card.articles {
-  height: 200px;
+  height: auto;
 }
 
 .container.profil .card.articles .card-body.articlesList {
+  margin: 10px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -296,7 +397,7 @@ aside.open ul a li {
 }
 
 .container.profil .card.articles .card-body.articlesList .list {
-  width: 50%;
+  width: 80%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -309,19 +410,126 @@ aside.open ul a li {
           justify-content: space-between;
 }
 
+.container.profil .card.articles .card-body.articlesList .list a {
+  margin-right: 10px;
+}
+
 .container.profil .card.articles .card-body.articlesList .list .actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
+@media screen and (min-width: 300px) {
+  .container.profil {
+    width: 90%;
+  }
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+form input {
+  width: 90%;
+}
+
+form textarea {
+  width: 90%;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+form input {
+  width: 90%;
+}
+
+form textarea {
+  width: 90%;
+}
+
+a {
+  text-decoration: none;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
 body {
-  color: black;
-  background-color: #212529;
+  right: 0;
+  background-color: var(--color3);
   padding-top: 100px;
 }
 
-ion-icon {
-  font-size: 32px;
+body main {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+ion-icon, .material-icons {
+  padding: 5px;
+  font-size: 35px;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+ion-icon:hover, .material-icons:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 /*# sourceMappingURL=app.css.map */

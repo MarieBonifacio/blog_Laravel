@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     <div class="title">
         <h1>Accueil</h1>
     </div>
@@ -36,17 +37,31 @@
                     <div class="card-header"><h2>Derniers articles<h2></div>
                 @foreach($articles as $article)
                         <div class="card">
-                            <div class="card-header last"><h3>{{$article->titre}}</h3> écrit par <a href=" {{route('profil', $article->user->id)}} ">{{$article->user->name}}</a></div>
+                            <div class="card-header last">
+                                <h3>{{$article->titre}}</h3>
+                                <a href={{route('article', $article->id)}} class="btn btn-dark">
+                                    <ion-icon name="eye"></ion-icon>
+                                </a>
+                            </div>
                                 <div class="card-body last">
-                                    {{$article->contenu}}<br/><br/>
-                                <a href={{route('article', $article->id)}} class="btn btn-dark"><ion-icon name="eye"></ion-icon></a>
+                                    {{Str::limit($article->contenu, 150, '...')}}<br/><br/>
+                                
+                                <div class="bottom">                                    
+                                    <div class="author">
+                                        <p>Ecrit par &nbsp;</p>
+                                        <a href=" {{route('profil', $article->user->id)}} ">{{$article->user->name}}</a>
+                                    </div>
+                                    <div class="date">
+                                        <p>&nbsp; le &nbsp;{{$article->created_at}}</p>
+                                        @if(  $article->created_at != $article->updated_at  )
+                                            <p>&nbsp; Mis à jour le &nbsp;({{$article->updated_at}}</p>
+                                    </div>
+                                        @endif
+                                    </div>
                             </div>
                         </div>
                 @endforeach
             </div>
-            {{-- <div class="container"> --}}
-                   
-                {{-- </div> --}}
 </div>
 @endsection
 

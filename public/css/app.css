@@ -219,6 +219,7 @@ aside.open ul a li {
   width: 100%;
   height: auto;
   color: white;
+  margin-bottom: 20px;
 }
 
 .container .card .card-header {
@@ -229,6 +230,14 @@ aside.open ul a li {
   -webkit-box-pack: center;
           justify-content: center;
   width: 100%;
+}
+
+.container .card-header.last {
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .container .card-body.last,
@@ -266,9 +275,46 @@ aside.open ul a li {
   align-content: center;
 }
 
-@media screen and (min-width: 300px) {
+.container .bottom {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+  justify-content: space-around;
+  height: auto;
+  width: 100%;
+}
+
+.container .bottom .author {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.container .bottom .date {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  justify-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+@media screen and (min-width: 1000px) {
   .container {
-    width: 90%;
+    width: 60%;
   }
 }
 
@@ -367,10 +413,22 @@ form textarea {
 
 a {
   text-decoration: none;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
 }
 
 h3 {
   font-family: "Roboto", sans-serif;
+  margin: 0;
+  text-align: center;
 }
 
 body {
@@ -392,7 +450,8 @@ body main {
           justify-content: center;
 }
 
-ion-icon {
+ion-icon,
+.material-icons {
   padding: 5px;
   font-size: 35px;
   -webkit-transform: scale(1);
@@ -401,7 +460,8 @@ ion-icon {
   transition: 0.3s ease-in-out;
 }
 
-ion-icon:hover {
+ion-icon:hover,
+.material-icons:hover {
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
 }
