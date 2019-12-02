@@ -4,6 +4,7 @@
   --color3: rgb(30, 26, 73);
   --color4: rgb(59, 58, 119);
   --color5: rgb(47, 72, 140);
+  --background: linear-gradient(103deg, rgba(152, 152, 152, 0.03) 0%, rgba(152, 152, 152, 0.03) 20%,rgba(44, 44, 44, 0.03) 20%, rgba(44, 44, 44, 0.03) 40%,rgba(175, 175, 175, 0.03) 40%, rgba(175, 175, 175, 0.03) 60%,rgba(127, 127, 127, 0.03) 60%, rgba(127, 127, 127, 0.03) 80%,rgba(185, 185, 185, 0.03) 80%, rgba(185, 185, 185, 0.03) 100%),linear-gradient(127deg, rgba(103, 103, 103, 0.03) 0%, rgba(103, 103, 103, 0.03) 16.667%,rgba(68, 68, 68, 0.03) 16.667%, rgba(68, 68, 68, 0.03) 33.334%,rgba(147, 147, 147, 0.03) 33.334%, rgba(147, 147, 147, 0.03) 50.001000000000005%,rgba(213, 213, 213, 0.03) 50.001%, rgba(213, 213, 213, 0.03) 66.668%,rgba(235, 235, 235, 0.03) 66.668%, rgba(235, 235, 235, 0.03) 83.33500000000001%,rgba(190, 190, 190, 0.03) 83.335%, rgba(190, 190, 190, 0.03) 100.002%),linear-gradient(91deg, rgba(233, 233, 233, 0.01) 0%, rgba(233, 233, 233, 0.01) 20%,rgba(178, 178, 178, 0.01) 20%, rgba(178, 178, 178, 0.01) 40%,rgba(155, 155, 155, 0.01) 40%, rgba(155, 155, 155, 0.01) 60%,rgba(24, 24, 24, 0.01) 60%, rgba(24, 24, 24, 0.01) 80%,rgba(76, 76, 76, 0.01) 80%, rgba(76, 76, 76, 0.01) 100%),linear-gradient(126deg, rgba(190, 190, 190, 0.02) 0%, rgba(190, 190, 190, 0.02) 20%,rgba(191, 191, 191, 0.02) 20%, rgba(191, 191, 191, 0.02) 40%,rgba(230, 230, 230, 0.02) 40%, rgba(230, 230, 230, 0.02) 60%,rgba(216, 216, 216, 0.02) 60%, rgba(216, 216, 216, 0.02) 80%,rgba(56, 56, 56, 0.02) 80%, rgba(56, 56, 56, 0.02) 100%),linear-gradient(189deg, rgba(216, 216, 216, 0.03) 0%, rgba(216, 216, 216, 0.03) 14.286%,rgba(44, 44, 44, 0.03) 14.286%, rgba(44, 44, 44, 0.03) 28.572%,rgba(114, 114, 114, 0.03) 28.572%, rgba(114, 114, 114, 0.03) 42.858%,rgba(7, 7, 7, 0.03) 42.858%, rgba(7, 7, 7, 0.03) 57.144%,rgba(55, 55, 55, 0.03) 57.144%, rgba(55, 55, 55, 0.03) 71.42999999999999%,rgba(121, 121, 121, 0.03) 71.43%, rgba(121, 121, 121, 0.03) 85.71600000000001%,rgba(79, 79, 79, 0.03) 85.716%, rgba(79, 79, 79, 0.03) 100.002%),linear-gradient(103deg, rgba(244, 244, 244, 0.01) 0%, rgba(244, 244, 244, 0.01) 14.286%,rgba(211, 211, 211, 0.01) 14.286%, rgba(211, 211, 211, 0.01) 28.572%,rgba(76, 76, 76, 0.01) 28.572%, rgba(76, 76, 76, 0.01) 42.858%,rgba(185, 185, 185, 0.01) 42.858%, rgba(185, 185, 185, 0.01) 57.144%,rgba(246, 246, 246, 0.01) 57.144%, rgba(246, 246, 246, 0.01) 71.42999999999999%,rgba(35, 35, 35, 0.01) 71.43%, rgba(35, 35, 35, 0.01) 85%,rgba(244, 244, 244, 0.01) 85.716%, rgba(244, 244, 244, 0.01) 100.002%),linear-gradient(90deg, hsl(357,0%,14%),hsl(357,0%,14%));
 }
 
 header {
@@ -191,7 +192,6 @@ aside.open ul a li {
 
 .container {
   margin-bottom: 40px;
-  width: 75%;
   height: auto;
   display: -webkit-box;
   display: flex;
@@ -235,9 +235,22 @@ aside.open ul a li {
 .container .card-header.last {
   display: -webkit-box;
   display: flex;
-  justify-content: space-around;
+  -webkit-box-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
           align-items: center;
+}
+
+.container .card-header.last .headerIcon,
+.container .card-header.last .headerTitle {
+  width: 50%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  text-align: center;
 }
 
 .container .card-body.last,
@@ -312,15 +325,32 @@ aside.open ul a li {
           align-items: center;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 600px) {
   .container {
     width: 60%;
   }
 }
 
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.container.read {
+  border: none;
+  background-color: rgba(254, 254, 254, 0.7);
+  box-shadow: none;
+  padding: 20px;
+  height: 100%;
+}
+
+.container.read .card.read {
+  color: black;
+}
+
 .container.profil {
   height: 100%;
-  width: 70%;
   text-align: center;
   padding: 10px;
 }
@@ -361,12 +391,6 @@ aside.open ul a li {
 .container.profil .card.articles .card-body.articlesList .list .actions {
   display: -webkit-box;
   display: flex;
-}
-
-@media screen and (min-width: 300px) {
-  .container.profil {
-    width: 90%;
-  }
 }
 
 form {
@@ -414,6 +438,7 @@ form textarea {
 a {
   text-decoration: none;
   margin: 0;
+  color: var(--color5);
 }
 
 p {
@@ -433,7 +458,7 @@ h3 {
 
 body {
   right: 0;
-  background-color: var(--color3);
+  background-image: var(--background);
   padding-top: 100px;
 }
 

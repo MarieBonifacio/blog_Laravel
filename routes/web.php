@@ -13,6 +13,7 @@
 
 
 Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -34,3 +35,6 @@ Route::get('/profil/{id}', 'HomeController@profil')->name('profil');
 
 //PORTFOLIO
 Route::get('/portfolio', 'portfolioController@show')->name('portfolio');
+
+//COMMENTAIRES
+Route::post('/comment/add', 'CommentController@store')->name('storeComment')->middleware('auth');

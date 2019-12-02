@@ -1,11 +1,9 @@
 .container.profil{
     height: 100%;
-    width: 70%;
     text-align:center;
     padding: 10px;
         .card.articles{
             height:auto;
-        
             .card-body.articlesList{
                 margin:10px;
                 width: 100%;
@@ -30,9 +28,3 @@
         }
 }
 
-
-@media screen and (min-width:300px){
-    .container.profil{
-        width: 90%;
-    }
-}

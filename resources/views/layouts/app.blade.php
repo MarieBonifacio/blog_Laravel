@@ -15,7 +15,10 @@
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script> 
     <script src="https://kit.fontawesome.com/0caf2b0443.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> --}}
     
     <script src="{{ asset('js/midnight.jquery.min.js') }}"></script>
     <script>
@@ -47,19 +50,43 @@
             <div id="menuFull">
                 <nav>
                     <ul>
-                        <a href="{{ url('/') }}"><li>Blog</li></a>
-                        <a href="{{ url('/portfolio') }}"><li>Portfolio</li></a>
-                        <a href="#"><li>A propos</li></a>
-                        <a href="#"><li>Contact</li></a>
+                        <a href="{{ route('home') }}"><li>Accueil</li></a>
+                        <a href="{{ route('articles') }}"><li>Articles</li></a>
+                        <a href="{{ route('portfolio') }}"><li>Portfolio</li></a>
+                        <a href="{{ route('portfolio') }}"><li>Contact</li></a>
+                        @guest
+                        <a class="nav-link" href="{{ route('login') }}"><li>{{ __('Se connecter') }}</li></a>
+                            @if (Route::has('register'))
+                                
+                                    <a class="nav-link" href="{{ route('register') }}"><li class="nav-item">{{ __('S\'inscrire') }} </li></a>
+                               
+                            @endif
+                            @else
+                                <a href="{{ route('profil', auth::user()->id)}}"><li>Mon profil</li></a>
+    
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();"><li>
+                                        {{ __('Logout') }}
+                                    </li></a>
+                                
+                                
+    
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
                     </ul>
                 </nav>
             </div>
             <nav class="menu">
                 <ul>
-                        <a href="{{ url('/') }}"><li class="na-item">Blog</li></a>
-                        <a href="{{ url('/portfolio') }}"><li class="na-item">Portfolio</li></a>
-                        <a href="#"><li class="na-item">A propos</li></a>
-                        <a href="#"><li class="na-item">Contact</li></a>
+                        <a href="{{ route('home') }}"><li class="na-item">Accueil</li></a>
+                        <a href="{{ route('articles') }}"><li>Articles</li></a>
+                        <a href="{{ route('portfolio') }}"><li class="na-item">Portfolio</li></a>
+                        <a href="{{ route('login') }}"><li class="na-item">Contact</li></a>
                 </ul>
             </nav>
         </header>
@@ -68,16 +95,16 @@
             <div id="clear"></div>
             <nav>
                 <ul>
-                    <li><a href="{{ url('/') }}">Blog</a></li>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <a href="{{ route('home') }}"><li>Accueil</li></a>
+                    <a href="{{ route('articles') }}"> <li>Articles</li></a>
+                    <a href="{{ route('home') }}"><li>Portfolio</li></a>
+                    <a href="{{ route('home') }}"><li>Contact</li></a>
                     @guest
-                    <li><a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a></li>
+                    <a class="nav-link" href="{{ route('login') }}"><li>{{ __('Se connecter') }}</li></a>
                         @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('S\'inscrire') }}</a>
-                            </li>
+                            
+                                <a class="nav-link" href="{{ route('register') }}"><li class="nav-item">{{ __('S\'inscrire') }}</li></a>
+                            
                         @endif
                         @else
                             <li><a href="{{ route('profil', auth::user()->id)}}">Mon profil</a></li>
@@ -168,6 +195,7 @@
         </main>
     </div>
 </body>
+@yield("javascript")
 {{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>
     tinymce.init({

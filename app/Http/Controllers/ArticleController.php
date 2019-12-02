@@ -34,14 +34,14 @@ class ArticleController extends Controller
     public function store(request $request)
     {
         $request->validate([
-            'titre'=>'required',
-            'contenu' => 'required',
+            'title'=>'required',
+            'content' => 'required',
         ]);
 
         // Article::create($request->all());
         Article::create([
-            "titre" => $request->titre,
-            "contenu" => $request->contenu,
+            "title" => $request->title,
+            "content" => $request->content,
             "author_id" => Auth::user()->id
         ]);
         return redirect()->route('articles')->with('success', 'Article créé');

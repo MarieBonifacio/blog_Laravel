@@ -25,7 +25,7 @@
         @foreach($user->articles as $article)
         <div class="card-body articlesList"> 
                 <div class="list">
-                        <a href ="{{route('article', $article->id)}}"><h3>{{$article->titre}}</h3></a>
+                        <a href ="{{route('article', $article->id)}}"><h3>{{$article->title}}</h3></a>
                                 {{--DELETE--}}
                                 <div class="actions">
                                     @if($article->author_id == Auth::user()->id)

@@ -1,1 +1,13 @@
-/* No CSS *//*# sourceMappingURL=article.css.map */
+.container.read {
+  border: none;
+  background-color: rgba(254, 254, 254, 0.7);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  padding: 20px;
+  height: 100%;
+}
+
+.container.read .card.read {
+  color: black;
+}
+/*# sourceMappingURL=article.css.map */

@@ -17,12 +17,12 @@
                 @csrf
                 <label for="exampleInputEmail1">Titre</label>
                 <div class="card-header">
-                    <input type="text" name="titre" class="form-control" placeholder="Titre de l'article" value="{{$article->titre}}" required >
+                    <input type="text" name="title" class="form-control" placeholder="Titre de l'article" value="{{$article->title}}" required >
                 </div>
                 <div class="card-body">
                     <label for="exampleInputPassword1">Texte</label>
                     <i class="fas fa-pencil-alt prefix"></i>
-                    <textarea  id="ckedit" class="form-control" rows=10 type="text" name="contenu" class="form-control" required>{{$article->contenu}}</textarea>
+                    <textarea  id="ckedit" class="form-control" rows=10 type="text" name="content" class="form-control" required>{{$article->content}}</textarea>
                 </div>
                 {{-- <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

@@ -36931,7 +36931,7 @@ bouton.addEventListener("click", function () {
 var boutonFermer = document.querySelector('#closeButton');
 boutonFermer.addEventListener("click", function () {
   document.querySelector('aside').classList.remove('open');
-});
+}); //AJAX CRUD
 
 /***/ }),
 

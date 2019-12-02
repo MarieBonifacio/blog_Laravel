@@ -21,6 +21,7 @@
 a{
     text-decoration: none;
     margin: 0;
+    color:var(--color5);
 }
 
 p{
@@ -47,7 +48,7 @@ body{
     justify-content: center;
     }
     right:0;
-    background-color: var(--color3);
+    background-image: var(--background);
     padding-top: 100px;
 }
 
