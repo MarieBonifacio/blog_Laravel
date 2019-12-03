@@ -349,6 +349,30 @@ aside.open ul a li {
   color: black;
 }
 
+.container.cat {
+  margin: 0;
+}
+
+.container.cat .card {
+  margin: 0;
+}
+
+.container.cat .card ul {
+  width: 80%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+          align-items: center;
+  text-decoration: none;
+  list-style-type: none;
+  padding: 0;
+}
+
 .container.profil {
   height: 100%;
   text-align: center;

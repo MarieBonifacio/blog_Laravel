@@ -6,21 +6,26 @@
     <h1>Les Articles</h1>
 </div>
 
-<div class="container">
+<div class="container cat">
     <div class="card">
-            <div class="card-header"><h2>Articles<h2></div>
-        @foreach($articles as $article)
-                <div class="card">
-                    <div class="card-header last">
-                        <div class="headerTitle">
-                            <h3>{{$article->title}}</h3>
-                        </div>    
-                        <div class="headerIcon">
-                            <a href={{route('article', $article->id)}} class="btn btn-dark">
-                                <ion-icon name="eye"></ion-icon>
-                            </a>
-                        </div>
-                    </div>
+        <ul>
+            @foreach($categories as $category)
+                <button><li>{{$category->name}}</li></button>
+            @endforeach
+        </ul>
+    </div>
+</div>
+@foreach($articles as $article)
+    <div class="container">
+        <div class="card">
+            <div class="card-header last">
+                <div class="headerTitle">
+                    <a href={{route('article', $article->id)}} class="btn btn-dark"><h3>{{$article->title}}</h3></a>
+                </div>
+                <div>    
+                    <a href=" {{route('articlesCat', $article->category->name)}} ">{{$article->category->name}}</a>
+                </div>    
+            </div>
                         <div class="card-body last">
                             {{Str::limit($article->content, 150, '...')}}<br/><br/>
                         
@@ -38,8 +43,8 @@
                             </div>
                     </div>
                 </div>
-        @endforeach
+        </div>
     </div>
-</div>
+        @endforeach
 @endsection
 

@@ -15,9 +15,15 @@
             <input type="text" name="title" class="form-control" placeholder="Titre de l'article" required >
         </div>
         <div class="card-body">
-                    <label for="exampleInputPassword1">Texte</label>
+                    <label for="">Texte</label>
                     <i class="fas fa-pencil-alt prefix"></i>
                     <textarea id="ckedit" class="form-control" rows=10 type="text" name="content" class="form-control" required></textarea>
+                    <label for="category">Catégorie : </label>
+                        <select name="category" id="pet-select">
+                            @foreach ($categories as $category)
+                                <option value={{$category->id}} >{{$category->name}}</option>
+                            @endforeach
+                        </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Publier</button>
             </form>

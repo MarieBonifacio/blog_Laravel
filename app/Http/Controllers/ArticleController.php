@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Article;
+use App\Models\Category;
 use Auth;
 
 class ArticleController extends Controller
@@ -15,8 +16,17 @@ class ArticleController extends Controller
     {
         //Dans une variable, je stocke tous les éléments du modèle Article
         $articles = Article::all();
+        $categories = Category::all();
         //Je crée ma vue articles.blade, mais besoin d'un tableau de données avec la variable du dessus
-        return view("Articles/articles", ["articles"=>$articles]);
+        return view("Articles/articles", ["articles"=>$articles,"categories"=>$categories ]);
+    }
+
+    public function indexByCategory($name)
+    {
+        $articles = Category::all()->where('name', $name)->first()->articles;
+        $categories = Category::all();
+        // dd($lieux);
+        return view('Articles/articles', ["articles"=>$articles,"categories"=>$categories]);
     }
 
     public function showArticle($id)
@@ -28,7 +38,8 @@ class ArticleController extends Controller
 
     public function create()
     {
-        return view('Articles.create');
+        $categories = Category::all();
+        return view('Articles.create', ["categories"=>$categories]);
     }
 
     public function store(request $request)
@@ -36,14 +47,17 @@ class ArticleController extends Controller
         $request->validate([
             'title'=>'required',
             'content' => 'required',
+            'category' =>'required'
         ]);
+        // dd($request->category);
 
         // Article::create($request->all());
         Article::create([
             "title" => $request->title,
             "content" => $request->content,
-            "author_id" => Auth::user()->id
-        ]);
+            "author_id" => Auth::user()->id,
+            "category_id"=> $request->category
+            ]);
         return redirect()->route('articles')->with('success', 'Article créé');
     }
 

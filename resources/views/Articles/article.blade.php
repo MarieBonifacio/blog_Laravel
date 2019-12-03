@@ -33,8 +33,7 @@
 
 @section("javascript")
     <script type="text/javascript">
-       
-       
+
         $("#cButton").click(function(e){  
             var comment = $("#comment").val();
             axios({
@@ -52,7 +51,6 @@
                 bloc.innerHTML = comment;
                 document.querySelector("#comments").prepend(bloc);
             });
-      
         });
     </script>
 @endsection

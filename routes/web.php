@@ -17,9 +17,13 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//FORMULAIRE
+//
+//Articles
 Route::get('/article', 'ArticleController@index')->name('articles');
+//Un article
 Route::get('/article/{id}', 'ArticleController@showArticle')->name('article');
+//Articles par catégories
+Route::get('/article/{name}', 'ArticleController@indexByCategory')->name('articlesCat');
 Route::get('/createArticle', 'ArticleController@create')->name('createArticle')->middleware('auth');
 Route::post('/storeArticle', 'ArticleController@store')->name('storeArticle')->middleware('auth');
 Route::delete('/article/{id}', 'ArticleController@delete')->name('deleteArticle')->middleware('auth');
