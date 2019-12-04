@@ -9,3 +9,98 @@
         
     }
 }
+
+.container.com{
+    #comment{
+        margin:10px;
+        width: 70%;
+        height: 100px;
+    }
+    #comments{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+        .comment{
+        background-color:grey;
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin:20px;
+        position:relative;
+        textarea{
+            position: absolute;
+            top:0;
+            left:0;
+            z-index:1000;
+            width:99%;
+            height: 80%;
+        }
+        .menuCom{
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items:space-evenly;
+            justify-content: space-between;
+            margin:0; 
+            .name{ 
+            margin: 10px;
+            }
+        }
+        .navCom{
+            position:absolute;
+            top:0;
+            right:0;
+            transition: all 0.3s;
+            button{
+                display:none;
+            }
+            ul{
+                display: none;
+            }           
+        }
+        .navCom.open{
+            button{
+                width:20px;
+                height: 20px;
+                display: inline;
+                right:0;
+            }
+            z-index:1000;
+            background-color: white;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s;
+            color: black;
+            ul{
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+                padding:0;
+                li{
+                    list-style-type: none;
+                }
+            }
+        }
+
+        .content{
+            margin: 10px;
+        }
+    }
+    
+    }
+}
+
+@media screen and (max-width:600px){
+    .container.com{
+        width: 100%;
+        #comment{
+            width:90%;
+        }
+    }
+}

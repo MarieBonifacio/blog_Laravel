@@ -38,13 +38,11 @@
                         <div class="card">
                             <div class="card-header last">
                                 <div class="headerTitle">
-                                    <h3>{{$article->title}}</h3>
-                                </div>    
-                                <div class="headerIcon">
-                                    <a href={{route('article', $article->id)}} class="btn btn-dark">
-                                        <ion-icon name="eye"></ion-icon>
-                                    </a>
+                                    <a href={{route('article', $article->id)}} class="btn btn-dark"><h3>{{$article->title}}</h3></a>
                                 </div>
+                                <div>    
+                                    <a href=" {{route('articlesCat', $article->category->name)}} ">{{$article->category->name}}</a>
+                                </div>    
                             </div>
                                 <div class="card-body last">
                                     {{Str::limit($article->content, 150, '...')}}<br/><br/>

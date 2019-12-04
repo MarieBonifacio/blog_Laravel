@@ -17,7 +17,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        $data['comments'] = Comment::orderBy('id', 'desc')->paginate(10);
+        $data['comments'] = Comment::orderBy('created_at', 'asc')->paginate(10);
         return view('Articles/article', $data);
     }
 
@@ -66,10 +66,7 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        $where = array('id'=> $id);
-        $comment = Comment::where($where)->first();
-
-        return Response::json($comment);
+    //
     }
 
     /**
@@ -79,9 +76,15 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $comment = Comment::where('id', $request->comment)->first();
+        if($comment->user->id == $request->user){
+            $comment->content = $request->newCom;
+            $comment->save();
+            return response()->json(['success'=>$comment]);
+        }
+        return response()->json(['error'=>$comment]);
     }
 
     /**

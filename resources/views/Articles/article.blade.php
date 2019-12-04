@@ -18,13 +18,31 @@
     </div>
 </div>
 
-<div class="container">
-    <textarea id="comment"></textarea>
-    <input type="hidden" id="csrf" value='{{ csrf_token() }}'>
-    <button id="cButton">Publier</button>
+<div class="container com">
+    @if(Auth::user())
+        <textarea id="comment"></textarea>
+        <input type="hidden" id="csrf" value='{{ csrf_token() }}' required>
+        <button id="cButton">Publier</button>
+    @endif
     <div id="comments">
-        @foreach($article->comments as $comment)
-            <div>{{$comment}}</div>
+        @foreach($article->comments->sortByDesc('created_at') as $comment)
+    <div class="comment" rel="{{$comment->id}}">
+                <div class="menuCom">
+                    <div class="name">{{$comment->user->name}}</div>
+                    @if($comment->author_id == Auth::user()->id)
+                    <button class="buttonCom"><i class="material-icons">more_horiz</i></button>
+                    @endif
+                </div>
+                <div class="navCom">
+                    <button class="boutonComClose"><i class="material-icons">close</i></button>
+                    <ul>
+                        <a class="editComment" href="{{ route('createArticle')}}"><li>modifier</li></a>
+                        <a class="deleteComment" href="{{ route('createArticle')}}"><li>supprimer</li></a>
+                    </ul>
+                </div>
+                <div class="content">{{$comment->content}}</div>
+                <div class="">{{$comment->created_at}}</div>
+            </div>
         @endforeach
     </div>
 </div>
@@ -32,25 +50,75 @@
 @endsection
 
 @section("javascript")
-    <script type="text/javascript">
+    @if(Auth::user())
+        <script type="text/javascript">
 
-        $("#cButton").click(function(e){  
-            var comment = $("#comment").val();
-            axios({
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-Requested-With": "XMLHttpRequest",
-                    "X-CSRF-Token": document.head.querySelector("[name=csrf-token][content]").content
-                },
-                method:'post',
-                url:"{{route('storeComment')}}",
-                data: {comment:comment, user:{{Auth::user()->id}},article:{{$article->id}}},
-            }).then(response => {
-                comment = response.data.success.content;
-                bloc = document.createElement('div');
-                bloc.innerHTML = comment;
-                document.querySelector("#comments").prepend(bloc);
+            $("#cButton").click(function(e){  
+                var comment = $("#comment").val();
+                axios({
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Requested-With": "XMLHttpRequest",
+                        "X-CSRF-Token": document.head.querySelector("[name=csrf-token][content]").content
+                    },
+                    method:'post',
+                    url:"{{route('storeComment')}}",
+                    data: {comment:comment, user:{{Auth::user()->id}},article:{{$article->id}}},
+                }).then(response => {
+                    comment = response.data.success;
+                    bloc = document.createElement('div');
+                    bloc.classList.add('comment');
+                    bloc.innerHTML = "<div class='menuCom'><div class='name'>{{Auth::user()->name}}</div><i class='material-icons'>more_horiz</i></div><div class='content'>"+comment.content+"</div>";
+                    document.querySelector("#comments").prepend(bloc);
+                });
             });
-        });
-    </script>
+
+
+            //EDIT
+            let editLinks = document.querySelectorAll('.editComment');
+
+            editLinks.forEach (function(editLink){
+                editLink.addEventListener('click', function(e){
+                    e.preventDefault();
+                    editLink.parentNode.parentNode.classList.remove('open');
+                    let div = document.createElement("div");
+                    let textarea = document.createElement("textarea");
+                    let btnSave = document.createElement("button");
+                    let btnCancel = document.createElement("button");
+                    div.classList.add('editCommentDiv');
+                    btnSave.innerHTML="Enregistrer";
+                    btnCancel.innerHTML="Annuler";
+                    textarea.value= editLink.parentNode.parentNode.parentNode.querySelector(".content").innerHTML;
+                    div.appendChild(textarea);
+                    div.appendChild(btnSave);
+                    div.appendChild(btnCancel);
+                    editLink.parentNode.parentNode.parentNode.appendChild(div);
+                    btnCancel.addEventListener('click', function(){
+                        div.remove();
+                    });
+                    btnSave.addEventListener('click', function(){
+                        let newCom = textarea.value;
+                        let idCom = div.parentNode.getAttribute("rel");
+                        axios({
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-Requested-With": "XMLHttpRequest",
+                                "X-CSRF-Token": document.head.querySelector("[name=csrf-token][content]").content
+                            },
+                            method:'post',
+                            url:"{{route('updateComment')}}",
+                            data: {newCom:newCom, user:{{Auth::user()->id}},comment:idCom},
+                        }).then(response => {
+                            if(response.data.success){
+                                div.remove();
+                                editLink.parentNode.parentNode.parentNode.querySelector(".content").innerHTML=newCom;
+                            }
+                        });
+                    });
+                });
+            });
+
+
+        </script>
+    @endif
 @endsection

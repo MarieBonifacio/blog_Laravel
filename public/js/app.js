@@ -36923,7 +36923,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 AOS.init(); //Menu burger
 
 var bouton = document.querySelector('#burgerButton');
-console.log(bouton);
 bouton.addEventListener("click", function () {
   document.querySelector('aside').classList.add('open');
 }); //fermer menu burger
@@ -36931,6 +36930,20 @@ bouton.addEventListener("click", function () {
 var boutonFermer = document.querySelector('#closeButton');
 boutonFermer.addEventListener("click", function () {
   document.querySelector('aside').classList.remove('open');
+}); //menu Commentaires
+
+var boutonComs = document.querySelectorAll(".buttonCom");
+boutonComs.forEach(function (boutonCom) {
+  boutonCom.addEventListener("click", function () {
+    boutonCom.parentNode.parentNode.querySelector('.navCom').classList.add('open');
+  });
+}); //fermer menu commentaires
+
+var boutonComCloses = document.querySelectorAll(".boutonComClose");
+boutonComCloses.forEach(function (boutonComClose) {
+  boutonComClose.addEventListener("click", function () {
+    boutonComClose.parentNode.classList.remove('open');
+  });
 }); //AJAX CRUD
 
 /***/ }),

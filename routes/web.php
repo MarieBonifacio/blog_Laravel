@@ -18,12 +18,12 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //
-//Articles
-Route::get('/article', 'ArticleController@index')->name('articles');
 //Un article
-Route::get('/article/{id}', 'ArticleController@showArticle')->name('article');
+Route::get('/article/{id}', 'ArticleController@showArticle')->where("id","[0-9]+")->name('article');
 //Articles par catégories
 Route::get('/article/{name}', 'ArticleController@indexByCategory')->name('articlesCat');
+//Articles
+Route::get('/article', 'ArticleController@index')->name('articles');
 Route::get('/createArticle', 'ArticleController@create')->name('createArticle')->middleware('auth');
 Route::post('/storeArticle', 'ArticleController@store')->name('storeArticle')->middleware('auth');
 Route::delete('/article/{id}', 'ArticleController@delete')->name('deleteArticle')->middleware('auth');
@@ -42,3 +42,4 @@ Route::get('/portfolio', 'portfolioController@show')->name('portfolio');
 
 //COMMENTAIRES
 Route::post('/comment/add', 'CommentController@store')->name('storeComment')->middleware('auth');
+Route::post('/comment/edit', 'CommentController@update')->name('updateComment')->middleware('auth');
