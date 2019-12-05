@@ -36,11 +36,11 @@
                 <div class="navCom">
                     <button class="boutonComClose"><i class="material-icons">close</i></button>
                     <ul>
-                        <a class="editComment" href="{{ route('createArticle')}}"><li>modifier</li></a>
-                        <a class="deleteComment" href="{{ route('createArticle')}}"><li>supprimer</li></a>
+                        <a class="editComment" href=""><li>modifier</li></a>
+                        <a class="deleteComment" href=""><li>supprimer</li></a>
                     </ul>
                 </div>
-                <div class="content">{{$comment->content}}</div>
+                <div class="content">{{!!nl2br(e($comment->content))!!}}</div>
                 <div class="">{{$comment->created_at}}</div>
             </div>
         @endforeach
@@ -68,8 +68,24 @@
                     comment = response.data.success;
                     bloc = document.createElement('div');
                     bloc.classList.add('comment');
-                    bloc.innerHTML = "<div class='menuCom'><div class='name'>{{Auth::user()->name}}</div><i class='material-icons'>more_horiz</i></div><div class='content'>"+comment.content+"</div>";
-                    document.querySelector("#comments").prepend(bloc);
+                    bloc.innerHTML = " \
+                        <div class='menuCom'> \
+                            <div class='name'>{{Auth::user()->name}}</div> \
+                            <button class='buttonCom'><i class='material-icons'>more_horiz</i></button> \
+                        </div> \
+                        <div class='content' style='white-space: pre-wrap;'> \
+                            "+comment.content+" \
+                        </div> \
+                        <div class=''>"+comment.created_at+"</div> \
+                        <div class='navCom'> \
+                            <button class='boutonComClose'><i class='material-icons'>close</i></button> \
+                            <ul> \
+                                <a class='editComment' href=''><li>modifier</li></a> \
+                                <a class='deleteComment' href=''><li>supprimer</li></a> \
+                            </ul> \
+                        </div> \
+                        ";
+                        document.querySelector("#comments").prepend(bloc);
                 });
             });
 
@@ -114,6 +130,31 @@
                                 editLink.parentNode.parentNode.parentNode.querySelector(".content").innerHTML=newCom;
                             }
                         });
+                    });
+                });
+            });
+
+            //DELETE
+            let deleteLinks = document.querySelectorAll('.deleteComment');
+
+            deleteLinks.forEach (function(deleteLink){
+                deleteLink.addEventListener('click', function(e){
+                    e.preventDefault();
+                    deleteLink.parentNode.parentNode.classList.remove('open');
+                    let idCom = deleteLink.parentNode.parentNode.parentNode.getAttribute("rel");
+                    axios({
+                        headers: {
+                            "Content-Type": "application/json",
+                            "X-Requested-With": "XMLHttpRequest",
+                            "X-CSRF-Token": document.head.querySelector("[name=csrf-token][content]").content
+                        },
+                        method:'post',
+                        url:"/comment/delete/"+idCom,
+                        data: {user:{{Auth::user()->id}},comment:idCom}
+                    }).then(response => {
+                        if(response.data.success){
+                            deleteLink.parentNode.parentNode.parentNode.remove();
+                        }
                     });
                 });
             });

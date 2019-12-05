@@ -97,6 +97,6 @@ class CommentController extends Controller
     {
         $comment = Comment::where('id', $id)->delete();
 
-        return Response::json($comment);
+        return response()->json(['success'=>$comment]);
     }
 }

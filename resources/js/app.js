@@ -1,5 +1,5 @@
 require('./bootstrap');
-AOS.init()
+// AOS.init()
 
 
 
@@ -20,11 +20,14 @@ boutonFermer.addEventListener("click", function(){
 
 let boutonComs = document.querySelectorAll(".buttonCom");
 boutonComs.forEach (function(boutonCom){
+    buttonComAction(boutonCom);
+});
+
+function buttonComAction(boutonCom){
     boutonCom.addEventListener("click", function(){
         boutonCom.parentNode.parentNode.querySelector('.navCom').classList.add('open');    
     });
-});
-
+}
 
 //fermer menu commentaires
 let boutonComCloses = document.querySelectorAll(".boutonComClose");
@@ -35,4 +38,8 @@ boutonComCloses.forEach(function(boutonComClose){
 }); 
 
 
-//AJAX CRUD
+//ISOTOPE
+
+// filter .metal items
+
+

@@ -9,13 +9,14 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    {{-- isotope --}}
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/classic/ckeditor.js"></script> 
     <script src="https://kit.fontawesome.com/0caf2b0443.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> --}}
@@ -27,8 +28,17 @@
             // Change this to the correct selector.
             $('.midnight').midnight();
         });
+            //ISOTOPE
+        jQuery(function($){
+            $('.grid').isotope({filter: '*'});
+            $('.filter-button-group').on( 'click', 'button', function() {
+                var filterValue = $(this).attr('data-filter');
+                $('.grid').isotope({ filter: filterValue });
+            });
+        });
         </script>
     
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

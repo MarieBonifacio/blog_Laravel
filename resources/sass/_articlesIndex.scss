@@ -1,8 +1,9 @@
 .container.cat{
-    margin:0;
+    margin-bottom:40px;
     .card{
         margin:0;
     }
+
     .card ul{
     width: 80%;
     display: flex;
@@ -13,4 +14,19 @@
     list-style-type: none;
     padding: 0;
 }
+}
+
+.grid{
+    width:70%;
+    margin:auto;
+}
+.element-item{
+    width: 100%;
+    background-color: rgba(146, 146, 146, 0.096);
+}
+
+@media screen and (max-width:600px){
+    .grid{
+        width: 90%;
+    }
 }

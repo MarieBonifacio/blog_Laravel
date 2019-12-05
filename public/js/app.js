@@ -36918,9 +36918,9 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // AOS.init()
+//Menu burger
 
-AOS.init(); //Menu burger
 
 var bouton = document.querySelector('#burgerButton');
 bouton.addEventListener("click", function () {
@@ -36934,17 +36934,23 @@ boutonFermer.addEventListener("click", function () {
 
 var boutonComs = document.querySelectorAll(".buttonCom");
 boutonComs.forEach(function (boutonCom) {
+  buttonComAction(boutonCom);
+});
+
+function buttonComAction(boutonCom) {
   boutonCom.addEventListener("click", function () {
     boutonCom.parentNode.parentNode.querySelector('.navCom').classList.add('open');
   });
-}); //fermer menu commentaires
+} //fermer menu commentaires
+
 
 var boutonComCloses = document.querySelectorAll(".boutonComClose");
 boutonComCloses.forEach(function (boutonComClose) {
   boutonComClose.addEventListener("click", function () {
     boutonComClose.parentNode.classList.remove('open');
   });
-}); //AJAX CRUD
+}); //ISOTOPE
+// filter .metal items
 
 /***/ }),
 

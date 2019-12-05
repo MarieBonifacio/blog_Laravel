@@ -23,6 +23,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "bootstrap-material-design": "^4.1.1"
+        "bootstrap-material-design": "^4.1.1",
+        "isotope-layout": "^3.0.6"
     }
 }

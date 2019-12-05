@@ -43,3 +43,4 @@ Route::get('/portfolio', 'portfolioController@show')->name('portfolio');
 //COMMENTAIRES
 Route::post('/comment/add', 'CommentController@store')->name('storeComment')->middleware('auth');
 Route::post('/comment/edit', 'CommentController@update')->name('updateComment')->middleware('auth');
+Route::post('/comment/delete/{id}', 'CommentController@destroy')->name('deleteComment')->middleware('auth');

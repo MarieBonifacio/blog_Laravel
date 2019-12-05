@@ -191,7 +191,9 @@ aside.open ul a li {
 }
 
 .container {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   height: auto;
   display: -webkit-box;
   display: flex;
@@ -219,7 +221,6 @@ aside.open ul a li {
   width: 100%;
   height: auto;
   color: white;
-  margin-bottom: 20px;
 }
 
 .container .card .card-header {
@@ -235,15 +236,14 @@ aside.open ul a li {
 .container .card-header.last {
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
           align-items: center;
 }
 
-.container .card-header.last .headerIcon,
-.container .card-header.last .headerTitle {
-  width: 50%;
+.container .card-header.last .headerIcon {
+  width: 30%;
   display: -webkit-box;
   display: flex;
   -webkit-box-align: center;
@@ -253,10 +253,17 @@ aside.open ul a li {
   text-align: center;
 }
 
+.container .card-header.last .headerTitle {
+  width: 70%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: left;
+          justify-content: left;
+}
+
 .container .card-body.last,
 .container .card-header.last {
   width: 90%;
-  border: solid 1px black;
   padding: 10px;
 }
 
@@ -335,6 +342,14 @@ aside.open ul a li {
   .container {
     width: 90%;
   }
+
+  .container .card-header.last .headerTitle {
+    font-size: 0.8em;
+  }
+
+  .container .card-header.last .headerIcon {
+    font-size: 0.7em;
+  }
 }
 
 .container.read {
@@ -369,6 +384,7 @@ aside.open ul a li {
 }
 
 .container.com #comments .comment {
+  overflow-wrap: break-word;
   background-color: grey;
   width: 90%;
   display: -webkit-box;
@@ -476,7 +492,7 @@ aside.open ul a li {
 }
 
 .container.cat {
-  margin: 0;
+  margin-bottom: 40px;
 }
 
 .container.cat .card {
@@ -497,6 +513,22 @@ aside.open ul a li {
   text-decoration: none;
   list-style-type: none;
   padding: 0;
+}
+
+.grid {
+  width: 70%;
+  margin: auto;
+}
+
+.element-item {
+  width: 100%;
+  background-color: rgba(146, 146, 146, 0.096);
+}
+
+@media screen and (max-width: 600px) {
+  .grid {
+    width: 90%;
+  }
 }
 
 .container.profil {
