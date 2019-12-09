@@ -40,6 +40,27 @@ boutonComCloses.forEach(function(boutonComClose){
 
 //ISOTOPE
 
-// filter .metal items
+//MENU ARTICLES
+let buttonActu = document.querySelector('.buttonActualités');
+let buttonHumeur = document.querySelector('.buttonHumeur');
+let buttonDevWeb = document.querySelector('.buttonWebDev');
+let buttonAll = document.querySelector('.all');
+// console.log(buttonActu);
 
+function changeColor (button, classAdd){
+    button.addEventListener('click', function(){
+        // document.body.classList.remove(class1, class2);
+        document.body.className = "";
+        document.body.classList.add(classAdd)
+        document.cookie = 'ppkcookie1=testcookie';
+    });
+}
+
+changeColor(buttonActu,'actualités');
+changeColor(buttonHumeur,'humeur');
+changeColor(buttonDevWeb,'devweb');
+
+buttonAll.addEventListener('click', function(){
+    document.body.className = ""
+})
 

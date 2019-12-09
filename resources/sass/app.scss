@@ -30,9 +30,29 @@ p{
     margin:0;
 }
 
+li{
+    height: 100%;
+    padding: 0px 10px;
+    text-transform: uppercase;
+    //variables police
+}
+
 button{
     background:none;
+    padding: 0px 10px;
     border:none;
+    font-size:1.6em;
+    height: 100%;
+}
+
+button:hover{
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+    box-shadow: 0px 20px 22px 8px rgba(0,0,0,0.52);
+}
+button:focus {
+    outline:0;
 }
 
 h3{
@@ -53,12 +73,21 @@ body{
     background-image: var(--background);
     padding-top: 100px;
 }
+body.actualités{
+    background-image: var(--backgroundActualites);
+}
+body.humeur{
+    background-image: var(--backgroundHumeur);
+}
+body.devweb{
+    background-image: var(--backgroundDevWeb);
+}
 
 ion-icon, .material-icons{
     padding: 5px;
     font-size:35px;
     transform: scale(1);
-    transition: .3s ease-in-out;
+    transition: .2s ease-in-out;
 }
 
 ion-icon:hover, .material-icons:hover{

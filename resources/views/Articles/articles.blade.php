@@ -9,9 +9,9 @@
 <div class="container cat">
     <div class="card">
         <ul class="button-group filter-button-group">
-            <li><button data-filter="*">Tout</button></li>
+            <li><button class="all" data-filter="*">Tout</button></li>
             @foreach($categories as $category)
-                <li><button data-filter=".{{$category->name}}">{{$category->name}}</button></li>
+        <li><button class="button{{$category->name}}" data-filter=".{{$category->name}}">{{$category->name}}</button></li>
             @endforeach
         </ul>
     </div>
@@ -25,9 +25,10 @@
                         <a href={{route('article', $article->id)}} class="btn btn-dark"><h3>{{$article->title}}</h3></a>
                     </div>
                     <div class="headerIcon">    
-                        <a href=" {{route('articlesCat', $article->category->name)}} ">{{$article->category->name}}</a>
+                        <p>{{$article->category->name}}</p>
                     </div>    
                 </div>
+
                 <div class="card-body last">
                     {{Str::limit($article->content, 150, '...')}}<br/><br/>
 

@@ -38,7 +38,6 @@
         });
         </script>
     
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -142,6 +141,7 @@
         </main>
     </div>
 </body>
+<script src="{{ asset('js/app.js') }}" defer></script>
 @yield("javascript")
 {{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
 <script>

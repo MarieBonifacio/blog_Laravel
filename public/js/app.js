@@ -36950,7 +36950,28 @@ boutonComCloses.forEach(function (boutonComClose) {
     boutonComClose.parentNode.classList.remove('open');
   });
 }); //ISOTOPE
-// filter .metal items
+//MENU ARTICLES
+
+var buttonActu = document.querySelector('.buttonActualités');
+var buttonHumeur = document.querySelector('.buttonHumeur');
+var buttonDevWeb = document.querySelector('.buttonWebDev');
+var buttonAll = document.querySelector('.all'); // console.log(buttonActu);
+
+function changeColor(button, classAdd) {
+  button.addEventListener('click', function () {
+    // document.body.classList.remove(class1, class2);
+    document.body.className = "";
+    document.body.classList.add(classAdd);
+    document.cookie = 'ppkcookie1=testcookie';
+  });
+}
+
+changeColor(buttonActu, 'actualités');
+changeColor(buttonHumeur, 'humeur');
+changeColor(buttonDevWeb, 'devweb');
+buttonAll.addEventListener('click', function () {
+  document.body.className = "";
+});
 
 /***/ }),
 
